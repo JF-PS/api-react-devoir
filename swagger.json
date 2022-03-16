@@ -1,0 +1,380 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Api for travellers",
+        "version": "1.0.0",
+        "title": "Travellers API"
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+        {
+            "name": "user",
+            "description": "Operations about users"
+        },
+        {
+            "name": "vehicle",
+            "description": "Operations about vehicles"
+        },
+        {
+            "name": "ad",
+            "description": "Operations about ads"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/users/signup": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Create a new user",
+                "description": "",
+                "operationId": "createUsers",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Created user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/users/signin": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Connect an user",
+                "description": "",
+                "operationId": "connectUser",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Connected user object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/users/validate/{token}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Validate a account",
+                "description": "",
+                "operationId": "validateAccount",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "token used to confirm an user's account",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/users/forgotPassword": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Enter email to modify password",
+                "description": "",
+                "operationId": "forgotPassword",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/users/newPassword/{token}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Modify a password",
+                "description": "",
+                "operationId": "modifyPassword",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "path",
+                        "description": "token used to modify a password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "new Password",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/password"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+
+        "/vehicles": {
+            "get": {
+                "tags": [
+                    "vehicle"
+                ],
+                "summary": "Get all the vehicles",
+                "description": "",
+                "operationId": "getAllVehicles",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+
+        "/ads/{limit}/{offset}": {
+            "get": {
+                "tags": [
+                    "ad"
+                ],
+                "summary": "Get all the ads",
+                "description": "",
+                "operationId": "getAllAds",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "path",
+                        "description": "limit the numbers of ads",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "path",
+                        "description": "allow to skip some ads to display",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/ads/{id}": {
+            "get": {
+                "tags": [
+                    "ad"
+                ],
+                "summary": "Get one unique ad",
+                "description": "",
+                "operationId": "getByIdAd",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id used to get an unique ad",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "signup": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "signUp"
+            }
+        },
+        "signin": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "signIn"
+            }
+        },
+        "email": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "email"
+            }
+        },
+        "password": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string"
+                }
+            },
+            "xml": {
+                "name": "password"
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string,validation:boolean
+npx sequelize-cli model:generate --name Vehicle --attributes category_id:integer,sub_category_id:integer,brand_id:integer,serial_number_id:integer,gas_id:integer,horsepower_id:integer,year:date,date_circulation:date,kilometers:float
+npx sequelize-cli model:generate --name Category --attributes name:string
+npx sequelize-cli model:generate --name Sub_category --attributes name:string
+npx sequelize-cli model:generate --name Gas --attributes name:string
+npx sequelize-cli model:generate --name Serial_number --attributes name:string
+npx sequelize-cli model:generate --name horsepower --attributes name:string
+npx sequelize-cli model:generate --name Brand --attributes name:string
+npx sequelize-cli model:generate --name Ad --attributes vehicle_id:integer,user_id:integer,type_id:integer,address:string,price:float
+npx sequelize-cli model:generate --name Ad_type --attributes name:string
+npx sequelize-cli model:generate --name Ad_pictures --attributes ad_id:integer,source:string
